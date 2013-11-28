@@ -11,7 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131128024639) do
+ActiveRecord::Schema.define(version: 20131128151650) do
+
+  create_table "test_meta_data", force: true do |t|
+    t.string   "test_id"
+    t.string   "summary"
+    t.string   "test_url"
+    t.string   "page"
+    t.string   "location"
+    t.string   "browser"
+    t.string   "connectivity"
+    t.datetime "ran_at"
+    t.integer  "runs"
+    t.integer  "first_view_id"
+    t.integer  "repeat_view_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "wpt_tests", force: true do |t|
     t.string   "test_id"

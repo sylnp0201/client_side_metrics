@@ -1,0 +1,39 @@
+%h1 Listing test_meta_data
+
+%table
+  %tr
+    %th Test
+    %th Summary
+    %th Test url
+    %th Page
+    %th Location
+    %th Browser
+    %th Connectivity
+    %th Ran at
+    %th Runs
+    %th First view
+    %th Repeat view
+    %th
+    %th
+    %th
+
+  - @test_meta_data.each do |test_meta_datum|
+    %tr
+      %td= test_meta_datum.test_id
+      %td= test_meta_datum.summary
+      %td= test_meta_datum.test_url
+      %td= test_meta_datum.page
+      %td= test_meta_datum.location
+      %td= test_meta_datum.browser
+      %td= test_meta_datum.connectivity
+      %td= test_meta_datum.ran_at
+      %td= test_meta_datum.runs
+      %td= test_meta_datum.first_view_id
+      %td= test_meta_datum.repeat_view_id
+      %td= link_to 'Show', test_meta_datum
+      %td= link_to 'Edit', edit_test_meta_datum_path(test_meta_datum)
+      %td= link_to 'Destroy', test_meta_datum, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Test meta datum', new_test_meta_datum_path

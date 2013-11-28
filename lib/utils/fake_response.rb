@@ -1,7 +1,20 @@
 module Utils::FakeResponse
 
   def self.fake_submit
-    %Q|<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<response>\n<statusCode>200</statusCode>\n<statusText>Ok</statusText>\n<data>\n<testId>131128_RQ_1KV</testId>\n<ownerKey>4acd944ed93f456537c341ed6173656213f312cb</ownerKey>\n<xmlUrl>http://www.webpagetest.org/xmlResult/131127_XB_e4ef197a13b3ebeea58b1452fbbbb3be/</xmlUrl>\n<userUrl>http://www.webpagetest.org/result/131127_XB_e4ef197a13b3ebeea58b1452fbbbb3be/</userUrl>\n<summaryCSV>http://www.webpagetest.org/result/131127_XB_e4ef197a13b3ebeea58b1452fbbbb3be/page_data.csv</summaryCSV>\n<detailCSV>http://www.webpagetest.org/result/131127_XB_e4ef197a13b3ebeea58b1452fbbbb3be/requests.csv</detailCSV>\n<jsonUrl>http://www.webpagetest.org/jsonResult.php?test=131127_XB_e4ef197a13b3ebeea58b1452fbbbb3be/</jsonUrl>\n</data>\n</response>\n|
+    %Q|<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+<response>
+<statusCode>200</statusCode>
+<statusText>Ok</statusText>
+<data>
+<testId>131128_RQ_1KV</testId>
+<ownerKey>4acd944ed93f456537c341ed6173656213f312cb</ownerKey>
+<xmlUrl>http://www.webpagetest.org/xmlResult/131127_XB_e4ef197a13b3ebeea58b1452fbbbb3be/</xmlUrl>
+<userUrl>http://www.webpagetest.org/result/131127_XB_e4ef197a13b3ebeea58b1452fbbbb3be/</userUrl>
+<summaryCSV>http://www.webpagetest.org/result/131127_XB_e4ef197a13b3ebeea58b1452fbbbb3be/page_data.csv</summaryCSV>
+<detailCSV>http://www.webpagetest.org/result/131127_XB_e4ef197a13b3ebeea58b1452fbbbb3be/requests.csv</detailCSV>
+<jsonUrl>http://www.webpagetest.org/jsonResult.php?test=131127_XB_e4ef197a13b3ebeea58b1452fbbbb3be/</jsonUrl>
+</data>
+</response>|
   end
 
   def self.cnn_status

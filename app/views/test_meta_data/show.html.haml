@@ -1,0 +1,39 @@
+%p#notice= notice
+
+%p
+  %b Test:
+  = @test_meta_datum.test_id
+%p
+  %b Summary:
+  = @test_meta_datum.summary
+%p
+  %b Test url:
+  = @test_meta_datum.test_url
+%p
+  %b Page:
+  = @test_meta_datum.page
+%p
+  %b Location:
+  = @test_meta_datum.location
+%p
+  %b Browser:
+  = @test_meta_datum.browser
+%p
+  %b Connectivity:
+  = @test_meta_datum.connectivity
+%p
+  %b Ran at:
+  = @test_meta_datum.ran_at
+%p
+  %b Runs:
+  = @test_meta_datum.runs
+%p
+  %b First view:
+  = @test_meta_datum.first_view_id
+%p
+  %b Repeat view:
+  = @test_meta_datum.repeat_view_id
+
+= link_to 'Edit', edit_test_meta_datum_path(@test_meta_datum)
+\|
+= link_to 'Back', test_meta_data_path

@@ -1,4 +1,6 @@
 ClientSideMetrics::Application.routes.draw do
+  resources :test_meta_data
+
   resources :wpt_tests
 
   # The priority is based upon order of creation: first created -> highest priority.
