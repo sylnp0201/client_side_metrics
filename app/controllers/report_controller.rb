@@ -8,6 +8,12 @@ class ReportController < ApplicationController
 
   def index
     options = set_default_options(params)
+    puts "\n\n\n\n"
+    p "options: #{options}"
+    p "params: #{params}"
+    p "PERMANENT_FIELDS: #{PERMANENT_FIELDS}"
+    p "DEFAULT_FIELDS: #{DEFAULT_FIELDS}"
+    puts "\n\n\n\n"
     result = {
       since: options['since'],
       browser: options['browser'],
@@ -25,17 +31,18 @@ class ReportController < ApplicationController
   end
 
   def set_default_options(params = {})
-    params.reverse_merge({
+    ops = params.reverse_merge({
       'since' => "#{(Date.today-30).strftime("%Y-%m-%d")}",
       'browser' => DEFAULT_BROWSER,
       'page' => DEFAULT_PAGE,
-      'location' => DEFAULT_LOCATION,
-      'fields' => parse_query_fields(params['fields'])
+      'location' => DEFAULT_LOCATION
     })
+    ops['fields'] = parse_query_fields(params['fields'])
+    ops
   end
 
   def parse_query_fields(str)
-    arr = str.present? ? str.split(',') : DEFAULT_FIELDS
+    arr = str.present? ? str.split(',') : DEFAULT_FIELDS.dup
     PERMANENT_FIELDS.each { |f| arr << f unless arr.include?(f) }
     arr.each_with_index do |ele, idx|
       arr[idx] = "test_meta_data.#{ele}" if TestMetaDatum.column_names.include?(ele)

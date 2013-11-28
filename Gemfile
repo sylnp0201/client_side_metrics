@@ -34,7 +34,6 @@ end
 
 gem 'haml-rails'
 gem 'nokogiri'
-gem 'lazy_high_charts'
 gem 'bootstrap-sass'
 
 group :development, :test do
