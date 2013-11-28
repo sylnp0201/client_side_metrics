@@ -1,0 +1,2 @@
+module WptTestsHelper
+end

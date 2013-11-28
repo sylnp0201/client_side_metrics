@@ -11,6 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20131128024639) do
+
+  create_table "wpt_tests", force: true do |t|
+    t.string   "test_id"
+    t.text     "xml"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

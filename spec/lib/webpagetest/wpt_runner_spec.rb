@@ -54,15 +54,15 @@ describe Webpagetest::WptRunner do
     end
 
     it 'logs submission failures' do
-      runner.instance_variable_set(:@response_records, {'test_id1' => { location: 'loc1', url: 'url1'}})
+      runner.instance_variable_set(:@response_records, {'test_id1' => { 'location' => 'loc1', 'url' => 'url1'}})
       Rails.logger.should_receive(:error).once
       runner.confirm_submission
     end
 
     it 'does nothing if all submission succeed' do
       resp_recs = {
-        'test_id1' => { location: 'loc1', url: 'url1'},
-        'test_id2' => { location: 'loc2', url: 'url1'}
+        'test_id1' => { 'location' => 'loc1', 'url' => 'url1'},
+        'test_id2' => { 'location' => 'loc2', 'url' => 'url1'}
       }
       runner.instance_variable_set(:@response_records, resp_recs)
       Rails.logger.should_receive(:error).never
@@ -112,6 +112,22 @@ describe Webpagetest::WptRunner do
       results.size.should == 2
       results[id1].present?.should be_true
       results[id2].present?.should be_true
+    end
+  end
+
+  describe '#save_results' do
+    before do
+      r = {
+        'test_id1' => 'test_xml1',
+        'test_id2' => 'test_xml2'
+      }
+      runner.instance_variable_set(:@results, r)
+    end
+
+    it 'creates record in db' do
+      runner.save_results
+      WptTest.all.size.should == 2
+      WptTest.first.test_id.should == 'test_id1'
     end
   end
 

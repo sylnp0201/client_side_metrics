@@ -1,6 +1,7 @@
 class Webpagetest::WptRunner
   attr_reader :options
   attr_reader :response_records
+  attr_reader :results
 
   DEFAULT_LOCATIONS = ['Dulles_IE7', 'Dulles_IE8', 'Dulles_IE9', 'Dulles:Chrome']
   DEFAULT_URLS = ['http://www.bloomberg.com', 'http://www.bloomberg.com/news/2013-11-27/kamala-harris-bruises-banks-burnishes-image-with-mortgage-deals.html']
@@ -15,6 +16,7 @@ class Webpagetest::WptRunner
     confirm_submission
     wait_and_gather_results
     check_results
+    save_results
   end
 
   def submit_tests
@@ -35,10 +37,11 @@ class Webpagetest::WptRunner
   end
 
   def confirm_submission
-    resp_urls = response_records.values.map{ |r| r[:url] }
-    resp_locations = response_records.values.map{ |r| r[:location] }
+    resp_urls = response_records.values.map{ |r| r['url'] }
+    resp_locations = response_records.values.map{ |r| r['location'] }
     options[:urls].each do |url|
       options[:locations].each do |location|
+        Rails.logger.info "#{resp_urls.include?(url)}, #{resp_locations.include?(location)}"
         if !resp_urls.include?(url) || !resp_locations.include?(location)
           Rails.logger.error "Url or Location submission failed: #{url}, #{location}"
         end
@@ -51,6 +54,7 @@ class Webpagetest::WptRunner
     pending_test_ids = response_records.keys
     timeout = Time.now + time_to_wait
     while true
+      Rails.logger.info "Checking tests status, timeout in #{(timeout - Time.now).to_i} seconds"
       if pending_test_ids.blank?
         Rails.logger.info('The test is complete.')
         break
@@ -86,12 +90,23 @@ class Webpagetest::WptRunner
       end
       sleep(30.seconds) if pending_test_ids.present?
     end
-    results
+    @results = results
   end
 
   def check_results
     # this needs real implementation
-    p 'checking results'
+    Rails.logger.info 'Checking results...'
+  end
+
+  def save_results
+    results.each_pair do |test_id, xml|
+      new_test = WptTest.new({
+        test_id: test_id,
+        xml: xml
+      })
+      new_test.save!
+      Rails.logger.info "Saving restul for test: #{test_id}."
+    end
   end
 
   def check_batch_status(ids)

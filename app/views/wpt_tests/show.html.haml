@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Test:
+  = @wpt_test.test_id
+%p
+  %b Xml:
+  = @wpt_test.xml
+
+= link_to 'Edit', edit_wpt_test_path(@wpt_test)
+\|
+= link_to 'Back', wpt_tests_path

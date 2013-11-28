@@ -1,0 +1,21 @@
+%h1 Listing wpt_tests
+
+%table
+  %tr
+    %th Test
+    %th Xml
+    %th
+    %th
+    %th
+
+  - @wpt_tests.each do |wpt_test|
+    %tr
+      %td= wpt_test.test_id
+      %td= truncate wpt_test.xml
+      %td= link_to 'Show', wpt_test
+      %td= link_to 'Edit', edit_wpt_test_path(wpt_test)
+      %td= link_to 'Destroy', wpt_test, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Wpt test', new_wpt_test_path
