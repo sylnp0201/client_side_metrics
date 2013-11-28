@@ -128,6 +128,7 @@
     <orderEntry type="library" scope="PROVIDED" name="activesupport (v4.0.1, RVM: ruby-2.0.0-p353 [metrics]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="arel (v4.0.1, RVM: ruby-2.0.0-p353 [metrics]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="atomic (v1.1.14, RVM: ruby-2.0.0-p353 [metrics]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="bootstrap-sass (v3.0.2.1, RVM: ruby-2.0.0-p353 [metrics]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="builder (v3.1.4, RVM: ruby-2.0.0-p353 [metrics]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bundler (v1.3.5, RVM: ruby-2.0.0-p353 [metrics]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="celluloid (v0.15.2, RVM: ruby-2.0.0-p353 [metrics]) [gem]" level="application" />
@@ -138,17 +139,21 @@
     <orderEntry type="library" scope="PROVIDED" name="diff-lcs (v1.2.5, RVM: ruby-2.0.0-p353 [metrics]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="erubis (v2.7.0, RVM: ruby-2.0.0-p353 [metrics]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="execjs (v2.0.2, RVM: ruby-2.0.0-p353 [metrics]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="factory_girl (v4.3.0, RVM: ruby-2.0.0-p353 [metrics]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="factory_girl_rails (v4.3.0, RVM: ruby-2.0.0-p353 [metrics]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ffi (v1.9.3, RVM: ruby-2.0.0-p353 [metrics]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="formatador (v0.2.4, RVM: ruby-2.0.0-p353 [metrics]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="guard (v2.2.4, RVM: ruby-2.0.0-p353 [metrics]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="guard-rspec (v4.0.4, RVM: ruby-2.0.0-p353 [metrics]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="haml (v4.0.4, RVM: ruby-2.0.0-p353 [metrics]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="haml-rails (v0.4, RVM: ruby-2.0.0-p353 [metrics]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="hash-deep-merge (v0.1.1, RVM: ruby-2.0.0-p353 [metrics]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="hike (v1.2.3, RVM: ruby-2.0.0-p353 [metrics]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="i18n (v0.6.5, RVM: ruby-2.0.0-p353 [metrics]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jbuilder (v1.5.2, RVM: ruby-2.0.0-p353 [metrics]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jquery-rails (v3.0.4, RVM: ruby-2.0.0-p353 [metrics]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="json (v1.8.1, RVM: ruby-2.0.0-p353 [metrics]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="lazy_high_charts (v1.5.0, RVM: ruby-2.0.0-p353 [metrics]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="listen (v2.2.0, RVM: ruby-2.0.0-p353 [metrics]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="lumberjack (v1.0.4, RVM: ruby-2.0.0-p353 [metrics]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mail (v2.5.4, RVM: ruby-2.0.0-p353 [metrics]) [gem]" level="application" />

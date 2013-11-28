@@ -34,10 +34,13 @@ end
 
 gem 'haml-rails'
 gem 'nokogiri'
+gem 'lazy_high_charts'
+gem 'bootstrap-sass'
 
 group :development, :test do
   gem 'rspec-rails'
   gem 'guard-rspec', require: false
+  gem 'factory_girl_rails'
 end
 
 # Use ActiveModel has_secure_password

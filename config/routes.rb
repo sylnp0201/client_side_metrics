@@ -1,4 +1,6 @@
 ClientSideMetrics::Application.routes.draw do
+  root 'report#index'
+
   resources :test_view_data
 
   resources :test_meta_data
