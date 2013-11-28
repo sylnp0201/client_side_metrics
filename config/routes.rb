@@ -1,4 +1,6 @@
 ClientSideMetrics::Application.routes.draw do
+  resources :test_view_data
+
   resources :test_meta_data
 
   resources :wpt_tests

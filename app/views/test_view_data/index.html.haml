@@ -1,0 +1,39 @@
+%h1 Listing test_view_data
+
+%table
+  %tr
+    %th Load time
+    %th First byte
+    %th Start render
+    %th Bytes in
+    %th Bytes in doc
+    %th Requests
+    %th Requests doc
+    %th Fully loaded
+    %th Doc time
+    %th Dom elements
+    %th Title time
+    %th
+    %th
+    %th
+
+  - @test_view_data.each do |test_view_datum|
+    %tr
+      %td= test_view_datum.load_time
+      %td= test_view_datum.first_byte
+      %td= test_view_datum.start_render
+      %td= test_view_datum.bytes_in
+      %td= test_view_datum.bytes_in_doc
+      %td= test_view_datum.requests
+      %td= test_view_datum.requests_doc
+      %td= test_view_datum.fully_loaded
+      %td= test_view_datum.doc_time
+      %td= test_view_datum.dom_elements
+      %td= test_view_datum.title_time
+      %td= link_to 'Show', test_view_datum
+      %td= link_to 'Edit', edit_test_view_datum_path(test_view_datum)
+      %td= link_to 'Destroy', test_view_datum, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Test view datum', new_test_view_datum_path

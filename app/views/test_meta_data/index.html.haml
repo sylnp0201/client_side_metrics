@@ -2,7 +2,7 @@
 
 %table
   %tr
-    %th Test
+    %th Test Id
     %th Summary
     %th Test url
     %th Page
@@ -19,9 +19,9 @@
 
   - @test_meta_data.each do |test_meta_datum|
     %tr
-      %td= test_meta_datum.test_id
-      %td= test_meta_datum.summary
-      %td= test_meta_datum.test_url
+      %td= truncate test_meta_datum.test_id
+      %td= truncate test_meta_datum.summary
+      %td= truncate test_meta_datum.test_url
       %td= test_meta_datum.page
       %td= test_meta_datum.location
       %td= test_meta_datum.browser

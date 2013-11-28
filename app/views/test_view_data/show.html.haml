@@ -1,0 +1,39 @@
+%p#notice= notice
+
+%p
+  %b Load time:
+  = @test_view_datum.load_time
+%p
+  %b First byte:
+  = @test_view_datum.first_byte
+%p
+  %b Start render:
+  = @test_view_datum.start_render
+%p
+  %b Bytes in:
+  = @test_view_datum.bytes_in
+%p
+  %b Bytes in doc:
+  = @test_view_datum.bytes_in_doc
+%p
+  %b Requests:
+  = @test_view_datum.requests
+%p
+  %b Requests doc:
+  = @test_view_datum.requests_doc
+%p
+  %b Fully loaded:
+  = @test_view_datum.fully_loaded
+%p
+  %b Doc time:
+  = @test_view_datum.doc_time
+%p
+  %b Dom elements:
+  = @test_view_datum.dom_elements
+%p
+  %b Title time:
+  = @test_view_datum.title_time
+
+= link_to 'Edit', edit_test_view_datum_path(@test_view_datum)
+\|
+= link_to 'Back', test_view_data_path

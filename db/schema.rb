@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131128151650) do
+ActiveRecord::Schema.define(version: 20131128162420) do
 
   create_table "test_meta_data", force: true do |t|
     t.string   "test_id"
@@ -25,6 +25,22 @@ ActiveRecord::Schema.define(version: 20131128151650) do
     t.integer  "runs"
     t.integer  "first_view_id"
     t.integer  "repeat_view_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "test_view_data", force: true do |t|
+    t.integer  "load_time"
+    t.integer  "first_byte"
+    t.integer  "start_render"
+    t.integer  "bytes_in"
+    t.integer  "bytes_in_doc"
+    t.integer  "requests"
+    t.integer  "requests_doc"
+    t.integer  "fully_loaded"
+    t.integer  "doc_time"
+    t.integer  "dom_elements"
+    t.integer  "title_time"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -38,9 +38,10 @@ describe Webpagetest::WptParser do
         doc_time: 3654,
         dom_elements: 1892,
         first_byte: 150,
+        start_render: 1421,
         fully_loaded: 11931,
         load_time: 3654,
-        request: 240,
+        requests: 240,
         requests_doc: 175,
         title_time: 256
       }
@@ -55,9 +56,10 @@ describe Webpagetest::WptParser do
         doc_time: 1991,
         dom_elements: 1887,
         first_byte: 713,
+        start_render: 684,
         fully_loaded: 12222,
         load_time: 1991,
-        request: 78,
+        requests: 78,
         requests_doc: 49,
         title_time: 15
       }

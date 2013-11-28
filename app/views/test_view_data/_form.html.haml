@@ -1,0 +1,43 @@
+= form_for @test_view_datum do |f|
+  - if @test_view_datum.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@test_view_datum.errors.count, "error")} prohibited this test_view_datum from being saved:"
+      %ul
+        - @test_view_datum.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :load_time
+    = f.number_field :load_time
+  .field
+    = f.label :first_byte
+    = f.number_field :first_byte
+  .field
+    = f.label :start_render
+    = f.number_field :start_render
+  .field
+    = f.label :bytes_in
+    = f.number_field :bytes_in
+  .field
+    = f.label :bytes_in_doc
+    = f.number_field :bytes_in_doc
+  .field
+    = f.label :requests
+    = f.number_field :requests
+  .field
+    = f.label :requests_doc
+    = f.number_field :requests_doc
+  .field
+    = f.label :fully_loaded
+    = f.number_field :fully_loaded
+  .field
+    = f.label :doc_time
+    = f.number_field :doc_time
+  .field
+    = f.label :dom_elements
+    = f.number_field :dom_elements
+  .field
+    = f.label :title_time
+    = f.number_field :title_time
+  .actions
+    = f.submit 'Save'

@@ -20,6 +20,7 @@ class Webpagetest::WptRunner
   end
 
   def submit_tests
+    Rails.logger.info('Submitting tests...')
     request_batch = Webpagetest::RequestFactory.build_batch(options[:urls], options[:locations], test_params)
     response_records = {}
     request_batch.each do |test_request|
@@ -37,11 +38,11 @@ class Webpagetest::WptRunner
   end
 
   def confirm_submission
+    Rails.logger.info('Confirming submission...')
     resp_urls = response_records.values.map{ |r| r['url'] }
     resp_locations = response_records.values.map{ |r| r['location'] }
     options[:urls].each do |url|
       options[:locations].each do |location|
-        Rails.logger.info "#{resp_urls.include?(url)}, #{resp_locations.include?(location)}"
         if !resp_urls.include?(url) || !resp_locations.include?(location)
           Rails.logger.error "Url or Location submission failed: #{url}, #{location}"
         end
@@ -107,6 +108,7 @@ class Webpagetest::WptRunner
       new_test.save!
       Rails.logger.info "Saving restul for test: #{test_id}."
     end
+    Webpagetest::TestResultFactory.convert_data
   end
 
   def check_batch_status(ids)

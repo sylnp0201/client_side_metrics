@@ -41,12 +41,14 @@ class Webpagetest::WptParser
 
   def detailed_view(view = 'firstView')
     s = data['response']['data']['average'][view]
+    return nil if s.blank?
     result = {
       load_time: s['loadTime'],
       first_byte: s['TTFB'],
+      start_render: s['render'],
       bytes_in: s['bytesIn'],
       bytes_in_doc: s['bytesInDoc'],
-      request: s['requests'],
+      requests: s['requests'],
       requests_doc: s['requestsDoc'],
       fully_loaded: s['fullyLoaded'],
       doc_time: s['docTime'],

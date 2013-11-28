@@ -1,7 +1,8 @@
 require 'spec_helper'
 
 describe Webpagetest::WptRunner do
-  let(:runner) { Webpagetest::WptRunner.new }
+  WPT = Webpagetest
+  let(:runner) { WPT::WptRunner.new }
   describe '#initialize' do
     it 'sets default options if not assigned' do
       runner.options.should == {
@@ -17,13 +18,13 @@ describe Webpagetest::WptRunner do
     end
 
     it 'keeps the assigned options values' do
-      runner = Webpagetest::WptRunner.new({ fvonly: true })
+      runner = WPT::WptRunner.new({ fvonly: true })
       runner.options[:fvonly].should == true
       runner.options[:key].should == 'eac005e6f6064286a4873096cf92c808'
     end
 
     it 'use test locations and url on test mode' do
-      runner = Webpagetest::WptRunner.new test: true
+      runner = WPT::WptRunner.new test: true
       runner.options[:locations].size == 1
       runner.options[:urls].size == 1
     end
@@ -33,7 +34,7 @@ describe Webpagetest::WptRunner do
     before do
       fake_resp_body = Utils::FakeResponse.fake_submit
       Utils::Url.stub(:request).and_return(double(body: fake_resp_body, code: '200'))
-      Webpagetest::RequestFactory.stub(:build_batch).and_return([{url: 'test_url', location: 'test_location'}])
+      WPT::RequestFactory.stub(:build_batch).and_return([{url: 'test_url', location: 'test_location'}])
     end
 
     it 'gets test id for submitted tests' do
@@ -122,6 +123,7 @@ describe Webpagetest::WptRunner do
         'test_id2' => 'test_xml2'
       }
       runner.instance_variable_set(:@results, r)
+      WPT::TestResultFactory.stub(:convert_data)
     end
 
     it 'creates record in db' do
