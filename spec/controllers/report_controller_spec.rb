@@ -4,12 +4,12 @@ describe ReportController do
   describe '#parse_query_fields' do
     it 'parse string query fields into an array' do
       controller.parse_query_fields('requests')
-      .include?('test_view_data.requests').should be_true
+      .include?('requests').should be_true
     end
 
     it 'always include the permanent fields' do
       arr = controller.parse_query_fields('requests')
-      per_fields = ReportController::PERMANENT_FIELDS.map{|f| "test_meta_data.#{f}" }
+      per_fields = ReportController::PERMANENT_FIELDS
       per_fields.each do |field|
         arr.include?(field).should be_true
       end
