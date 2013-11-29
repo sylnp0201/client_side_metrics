@@ -3,21 +3,22 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
+  $selections = $('#selections')
   $container = $("#container")
 
   chart_title = 'Bloomberg.com Beta Site Page Load Performance'
   data = JSON.parse $container.attr('data-result')
-  first_view  = data.first_view
-  repeat_view = data.repeat_view
+  view = $selections.find('#select_view').attr('data-selected')
+  view_data  = if (view == 'first_view') then data.first_view else data.repeat_view
 
   time_stamps = []
   graph_series = []
-  $.each(first_view, (idx, node) ->
+  $.each(view_data, (idx, node) ->
     d = new Date(node[0])
     time_stamps.push("#{d.getMonth()}/#{d.getDate()} #{d.getHours()}:#{d.getMinutes()}")
   )
   $.each(data.fields, (idx, field) ->
-    data_series = $.map(data.first_view, (node) ->
+    data_series = $.map(view_data, (node) ->
       node[1][field]/1000
     )
     s = {name: field, data: data_series}

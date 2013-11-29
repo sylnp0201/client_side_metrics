@@ -1,8 +1,9 @@
 - result = JSON.parse(@result)
 #selections
-  .btn-group{id: 'select_browsers'}
-    %button.btn.btn-info.dropdown-toggle{"data-toggle" => "dropdown", type: "button"}
-      = params['browser'] || result[:browser]
+  .btn-group{id: 'select_browser'}
+    %button.btn.btn-info.dropdown-toggle{id: 'select_browser',
+      "data-toggle" => "dropdown", type: "button"}
+      = params['browser'] || result['browser']
       %span.caret
     %ul.dropdown-menu{role: "menu"}
       %li
@@ -16,13 +17,24 @@
 
   .btn-group{id: 'select_page'}
     %button.btn.btn-primary.dropdown-toggle{"data-toggle" => "dropdown", type: "button"}
-      = params['page'] || result[:page]
+      = params['page'] && params['page'].titlecase || result['page']
       %span.caret
     %ul.dropdown-menu{role: "menu"}
       %li
         %a{href: with_query_str("page=homepage", request)} Homepage
       %li
         %a{href: with_query_str("page=article", request)} Article
+
+  .btn-group{id: 'view'}
+    %button.btn.btn-success.dropdown-toggle{ id: 'select_view',
+      "data-toggle" => "dropdown", type: "button", 'data-selected' => params['view'] || 'first_view' }
+      = params['view'] && params['view'].titlecase || 'First View'
+      %span.caret
+    %ul.dropdown-menu{role: "menu"}
+      %li
+        %a{href: with_query_str("view=first_view", request)} First View
+      %li
+        %a{href: with_query_str("view=repeat_view", request)} Repeat View
 #container{data: {result: @result}}
 
 - content_for :page_js do
