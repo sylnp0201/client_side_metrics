@@ -40,7 +40,6 @@ describe ReportController do
     it 'respond to JSON format' do
       get :index, {format: 'json', browser: 'IE7'}
       resp = JSON.parse(response.body)
-      p resp
       resp['first_view'][0][1]['load_time'].should == 123
       resp['repeat_view'][0][1]['load_time'].should == 234
     end

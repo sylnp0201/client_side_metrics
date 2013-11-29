@@ -9,11 +9,12 @@ class Webpagetest::RequestFactory
     "http://www.webpagetest.org/runtest.php?#{query_str}"
   end
 
-  def self.build_batch(urls, locations, test_params)
+  def self.build_batch(urls, locations, use_script, test_params)
     batch = []
     urls.each do |url|
       locations.each do |location|
         test_params.merge!({url: url, location: location})
+        test_params.merge!({script: self.test_script(url)}) if use_script
         request = Webpagetest::RequestFactory.new(test_params).build
         batch << {
           location: location,
@@ -23,5 +24,11 @@ class Webpagetest::RequestFactory
       end
     end
     batch
+  end
+
+  private
+
+  def self.test_script(url)
+    "setCookie  http://www.bloomberg.com  bbg_origin=beta\nnavigate #{url}"
   end
 end

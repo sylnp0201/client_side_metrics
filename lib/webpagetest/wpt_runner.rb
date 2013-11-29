@@ -21,7 +21,7 @@ class Webpagetest::WptRunner
 
   def submit_tests
     Rails.logger.info('Submitting tests...')
-    request_batch = Webpagetest::RequestFactory.build_batch(options[:urls], options[:locations], test_params)
+    request_batch = Webpagetest::RequestFactory.build_batch(options[:urls], options[:locations], options[:beta], test_params)
     response_records = {}
     request_batch.each do |test_request|
       resp = Utils::Url.request(test_request[:request], options[:proxy])
@@ -149,12 +149,13 @@ class Webpagetest::WptRunner
       fvonly: 0, # 0 to run both first and repeat view
       runs: 1,
       proxy: nil,
-      test: false
+      test: false,
+      beta: true
     }
   end
 
   def test_params
-    {
+    params = {
       'f'       => 'xml',
       'private' => 1, #Set to 1 to keep the test hidden from the test log
       'fvonly'  => options[:fvonly],

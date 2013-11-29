@@ -11,6 +11,7 @@ describe Webpagetest::WptRunner do
         key: 'eac005e6f6064286a4873096cf92c808',
         proxy: nil,
         runs: 1,
+        beta: true,
         test: false,
         locations: ["Dulles_IE7", "Dulles_IE8", "Dulles_IE9", "Dulles:Chrome"],
         urls: ["http://www.bloomberg.com", "http://www.bloomberg.com/news/2013-11-27/kamala-harris-bruises-banks-burnishes-image-with-mortgage-deals.html"]
