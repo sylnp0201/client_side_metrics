@@ -40,8 +40,9 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'guard-rspec', require: false
   gem 'factory_girl_rails'
-  gem 'capybara'
-  gem 'selenium-webdriver'
+  gem 'capybara', '2.1.0'
+  gem 'faye-websocket', '0.4.7'
+  gem 'poltergeist', '~> 1.2'
 end
 
 # Use ActiveModel has_secure_password
