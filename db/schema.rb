@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131128162420) do
+ActiveRecord::Schema.define(version: 20131130054547) do
 
   create_table "test_meta_data", force: true do |t|
     t.string   "test_id"
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 20131128162420) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "test_meta_data", ["page", "ran_at", "location", "browser"], name: "by_page_ran_at_location_browser"
 
   create_table "test_view_data", force: true do |t|
     t.integer  "load_time"
@@ -51,5 +53,7 @@ ActiveRecord::Schema.define(version: 20131128162420) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "wpt_tests", ["test_id"], name: "index_wpt_tests_on_test_id", unique: true
 
 end
