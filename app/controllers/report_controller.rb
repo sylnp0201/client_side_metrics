@@ -16,9 +16,9 @@ class ReportController < ApplicationController
       url: TestMetaDatum.sample_url(options['page']),
       fields: options['fields'].select { |f| !PERMANENT_FIELDS.include?(f) }
     }
-    result[:first_view] = time_series_data('first_view', options['fields'], result)
-    result[:repeat_view] = time_series_data('repeat_view', options['fields'], result)
-
+    result[:first_view] = TestMetaDatum.time_series_data(:first_view, options['fields'], result)
+    result[:repeat_view] = TestMetaDatum.time_series_data(:repeat_view, options['fields'], result)
+    result[:tf_summary] = tf_summary_data(result)
     respond_to do |format|
       format.html do
         @result = result.to_json
@@ -45,21 +45,12 @@ class ReportController < ApplicationController
     arr
   end
 
-  def time_series_data(view, fields, query_options)
-    data = TestMetaDatum.joins(view.to_sym)
-    .select(associate_fields(fields))
-    .where("ran_at>:since AND location=:location AND browser=:browser AND page=:page", query_options)
-    .order(ran_at: :asc)
-    .group('test_meta_data.test_id')
-    data.map { |row| [row['ran_at'], row] }
-  end
-
-  def associate_fields(fields)
-    af = []
-    fields.each_with_index do |ele, idx|
-      af[idx] = "test_meta_data.#{ele}" if TestMetaDatum.column_names.include?(ele)
-      af[idx] = "test_view_data.#{ele}" if TestViewDatum.column_names.include?(ele)
-    end
-    af
+  def tf_summary_data(query_options)
+    {
+      fields: query_options[:fields],
+      views: ['first_view', 'repeat_view'],
+      first_view: TestMetaDatum.twenty_four_hour_summary(:first_view, query_options),
+      repeat_view: TestMetaDatum.twenty_four_hour_summary(:repeat_view, query_options)
+    }
   end
 end

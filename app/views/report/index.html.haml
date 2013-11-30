@@ -1,41 +1,7 @@
 - result = JSON.parse(@result)
-#selections
-  .btn-group{id: 'select_browser'}
-    %button.btn.btn-info.dropdown-toggle{id: 'select_browser',
-      "data-toggle" => "dropdown", type: "button"}
-      = params['browser'] || result['browser']
-      %span.caret
-    %ul.dropdown-menu{role: "menu"}
-      %li
-        %a{href: with_query_str("browser=IE7", request)} IE7
-      %li
-        %a{href: with_query_str("browser=IE8", request)} IE8
-      %li
-        %a{href: with_query_str("browser=IE9", request)} IE9
-      %li
-        %a{href: with_query_str("browser=Chrome", request)} Chrome
-
-  .btn-group{id: 'select_page'}
-    %button.btn.btn-primary.dropdown-toggle{"data-toggle" => "dropdown", type: "button"}
-      = params['page'] && params['page'].titlecase || result['page']
-      %span.caret
-    %ul.dropdown-menu{role: "menu"}
-      %li
-        %a{href: with_query_str("page=homepage", request)} Homepage
-      %li
-        %a{href: with_query_str("page=article", request)} Article
-
-  .btn-group{id: 'view'}
-    %button.btn.btn-success.dropdown-toggle{ id: 'select_view',
-      "data-toggle" => "dropdown", type: "button", 'data-selected' => params['view'] || 'first_view' }
-      = params['view'] && params['view'].titlecase || 'First View'
-      %span.caret
-    %ul.dropdown-menu{role: "menu"}
-      %li
-        %a{href: with_query_str("view=first_view", request)} First View
-      %li
-        %a{href: with_query_str("view=repeat_view", request)} Repeat View
+= render 'selection_buttons', result: result
 #container{data: {result: @result}}
+= render 'summary_table', tf_summary: result['tf_summary']
 
 - content_for :page_js do
   = javascript_include_tag('report')

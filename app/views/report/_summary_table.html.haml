@@ -1,0 +1,16 @@
+- column_names = tf_summary['fields']
+#summary_grid
+  %h3
+    Last 24-hour Client-Side Performance Summary
+  %table.table.table-bordered
+    %thead
+      %td View
+      - column_names.each do |field|
+        %td= "#{field.titlecase} (s)"
+    - tf_summary['views'].each do |view|
+      %tr
+        %td= view.titlecase
+        - recent_view = tf_summary[view]
+        - column_names.each do |field|
+          %td= recent_view[field].to_f/1000
+

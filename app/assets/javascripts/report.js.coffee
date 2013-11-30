@@ -38,6 +38,8 @@ $ ->
       categories: time_stamps
 
     yAxis:
+      min: 0
+
       title:
         text: "Seconds"
 
